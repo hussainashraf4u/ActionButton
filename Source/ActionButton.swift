@@ -148,7 +148,7 @@ open class ActionButton: NSObject {
     }
     
     //MARK: - Button Actions Methods
-    func buttonTapped(_ sender: UIControl) {
+    @objc func buttonTapped(_ sender: UIControl) {
         animatePressingWithScale(1.0)
         
         if let unwrappedAction = self.action {
@@ -156,12 +156,12 @@ open class ActionButton: NSObject {
         }
     }
     
-    func buttonTouchDown(_ sender: UIButton) {
+    @objc func buttonTouchDown(_ sender: UIButton) {
         animatePressingWithScale(0.9)
     }
     
     //MARK: - Gesture Recognizer Methods
-    func backgroundTapped(_ gesture: UIGestureRecognizer) {
+    @objc func backgroundTapped(_ gesture: UIGestureRecognizer) {
         if self.active {
             self.toggle()
         }
@@ -205,7 +205,7 @@ open class ActionButton: NSObject {
     }
     
     fileprivate func animateMenu() {
-        let rotation = self.active ? 0 : CGFloat(M_PI_4)
+        let rotation = self.active ? 0 : CGFloat(Double.pi/4)
         
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0.1, options: UIViewAnimationOptions.allowAnimatedContent, animations: {
             
